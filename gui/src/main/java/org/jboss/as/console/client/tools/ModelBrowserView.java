@@ -12,6 +12,7 @@ import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DeckPanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -26,6 +27,7 @@ import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import org.jboss.as.console.client.Console;
 import org.jboss.as.console.client.widgets.DefaultSplitLayoutPanel;
 import org.jboss.as.console.mbui.widgets.AddressUtils;
 import org.jboss.ballroom.client.rbac.SecurityContext;
@@ -447,8 +449,7 @@ public class ModelBrowserView implements BrowserNavigation, IsWidget {
             key = rootTitle;
         }
 
-        SafeHtmlBuilder html = new SafeHtmlBuilder().appendHtmlConstant(rootTitle);
-        rootItem = new ModelTreeItem(html.toSafeHtml(), key, address, false);
+        rootItem = new ModelTreeItem(SafeHtmlUtils.fromString(rootTitle), key, address, false);
         tree.addItem(rootItem);
 
 
